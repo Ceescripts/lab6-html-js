@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Manipulation</title>
+
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <p id="text">This is a paragraph</p>
+    <button onclick="changeColor()">Change Color</button>
+
+    <ul id="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+    <button onclick="addItem()">Add Item</button>
+
+    <div class="box">This is a box</div>
+    <button onclick="toggleBox()">Toggle Box</button>
+
+    <input type="text" id="userInput" placeholder="Enter something">
+    <button onclick="showInput()">Submit</button>
+    <div id="output"></div>
+
+    <script>
+        // 1. Change paragraph color
+        function changeColor() {
+            document.getElementById("text").style.color = "red";
+        }
+
+        // 2. Add new list item
+        function addItem() {
+            let li = document.createElement("li");
+            li.textContent = "New Item";
+            document.getElementById("list").appendChild(li);
+        }
+
+        // 3. Toggle visibility using querySelector
+        function toggleBox() {
+            let box = document.querySelector(".box");
+            box.classList.toggle("hidden");
+        }
+
+        // 4. Get input and display it
+        function showInput() {
+            let value = document.getElementById("userInput").value;
+            document.getElementById("output").innerHTML = value;
+        }
+
+        // 5. Error handling
+        try {
+            let test = document.querySelector(".doesNotExist");
+            console.log(test.textContent);
+        } catch (error) {
+            console.log("Element not found:", error);
+        }
+    </script>
+
+</body>
+</html>
